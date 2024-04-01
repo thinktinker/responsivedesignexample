@@ -4,10 +4,12 @@
 /* https://nekocalc.com/px-to-rem-converter */
 /* https://codebeautify.org/em-to-px-converter */
 
-/* For context, read the following article breakpoints */
+/* For context, read the following article about breakpoints */
 /* https://blog.logrocket.com/css-breakpoints-responsive-design/ */
 
-/* as a good practice, add box-sizing: border-box to the universal selector (*) when starting the CSS file so its out of the way and all elements get that. The value inherit tells the element to inherit the value for the border-box property (border-box) from the parent. */
+/* Additional explanations: */
+/* the following CSS rules (*,*::before,*::after) universally removes browser default styling so that the elements are consistent across different browsers. box-sizing: inherit property ensures that any custom box-sizing set in other parts of this CSS style will still apply.
+ */
 
 /* for the first and last child if everything, reset the css style to default */
 *,*::before,*::after{
@@ -16,7 +18,13 @@
 	box-sizing: inherit;
 }
 
-/* set box-sizing: border-box; where both divs are the same size now with padding and border are included in the width and height */
+/* set box-sizing: border-box; where both divs are the same size now with padding and border included in the width and height */
+
+/* Additional explanations: */
+/* box-sizing property ensures consistent sizing behavior for the entire viewport. */
+
+/* as a good practice, add box-sizing: border-box to the universal selector (*) when starting the CSS file so its out of the way and all elements get that. */
+
 html{
 	box-sizing: border-box;
 	font-size: 62.5%;
@@ -62,6 +70,18 @@ body{
 /* :::: START OF CONTAINER :::: */
 
 /* set the container's max width == (150rem) 1600px*/
+
+/* Additional explanations: .container uses a grid-template-columns property to set up a grid layout that has columns that includes named grid lines that separates the columns (think of named grid lines as dividers); these gridlines can be reused in later parts of the CSS rules to specify the total columns that a style wants to consume. */
+
+/* 
+For context, refer to the diagram namedgridlines.jpg:
+1. "full--start" is the first grid line 
+2. after "full--start", 0.6 fractional units are created
+3. after 0.6 fractional units, two more gridlines follow "center--end" and "center--start" 
+4. thereafter, 0.4 fractional units are created; and finally
+5. the grid column ends with the last grid line "full--end" 
+*/
+
 .container{
 	max-width: 150rem;
 	margin: 0 auto;
@@ -257,63 +277,32 @@ header h2{
 
 /* --- MOBILE SECTION --- */
 
-/* hide .header-mobile (default) */
-.header-mobile{
-	display: none;
-}
-
 /* NOTE: Under this following approach, styles can also be combined within a single view size; in this instance, display .header_mobile and its contents when max-width < 37.5em (600px) */
 
 @media only screen and (max-width: 37.5em){
 
-	/* hide .header-picture when max-width < 37.5em (600px) */
+	/* extend the picture to take up the entire view port */
 	.header-picture{
-		display: none;
+		grid-column: full--start / full--end;
+		padding: 0;	
 	}
 
-	/* hide .header-content when max-width < 37.5em (600px) */
+	/* extend the header content to take up the entire view port */
 	.header-content{
-		display: none;
-	}
-	
-	/* display .header-mobile when max-width < 37.5em (600px) */
-	.header-mobile{
-		width: 100dvw;
-		height: auto;
-		display: block;
-		clear: both;
-		background-color: #c8c8c8;
-		padding: 0.5rem; /* top & bottom, left & right*/
-	}
-
-	/* set <img> width within .header-picture to 100% */
-	.header-mobile img{
-		width:100%;
-		height: auto;
-	}
-
-	/* set <h1> for .header-mobile */
-	header h1{
-		padding: 2rem 2rem 0rem 2rem; /* top, right, bottom, left */
-		font-size: 4rem;
-		line-height: 1;
-	}
-
-	/* set <h2> for .header-mobile */
-	header h2{
-		padding: 0rem 2rem 0rem 2rem; /* top, right, bottom, left */
-		margin-bottom: 2rem;
+		grid-column: full--start / full--end;
+		padding: 10%;
+		padding: 1.5rem;
 	}
 
 	/* set .btn-call-to-action for .header-mobile */
-	.header-mobile .btn-call-to-action{
+	.btn-call-to-action{
 		background-color: #8e8e8e;
 		color: #fff;
 		font-weight: 300;
 		font-size: 1.8rem;
 		padding: 1.5rem 0rem; /* top & bottom, left & right*/
 		display: block;
-		margin: 1.5rem 1rem 2rem 1rem; /* top, right, bottom, left */
+		margin: 1.5rem;
 		align-self: stretch;
 		text-align: center;
 	}

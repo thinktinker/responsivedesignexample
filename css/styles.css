@@ -309,3 +309,54 @@ header h2{
 }
 
 /* :::: END OF HEADER :::: */
+
+
+/* :::: START OF FOOTER :::: */
+
+/* --- DESKTOP SECTION --- */
+
+/* extend the footer take up the entire view port */
+.footer{
+	display:flex;
+	font-size: 1.2rem;
+	background-color: #f0f0f0;
+	grid-column:full--start / full--end;
+	padding: 1rem 1.5rem 2rem 1.5rem; /* top right bottom left */
+}
+
+/* set .footer-copyright with margin-right auto to flush the list to the right of the page within footer */
+.footer-copyright{
+	margin-right: auto;
+}
+
+/* set the terms and privacy list into a single row (using flex) */
+.footer-list{
+	list-style: none;
+	display: flex;
+}
+
+/* set each footer item (terms, privacy) with a margin of 1.6rem, except the last footer item */
+.footer-item:not(:last-child){
+	margin-right:1.6rem
+}
+
+/* set the footer links' color, pseudo classes apply */
+.footer-link:link,.footer-link:visited{
+	color: #303646;
+	display:inline-block;
+	text-decoration:none;
+}
+
+.footer-link:hover,.footer-link:active{
+	text-decoration: underline;
+}
+
+/* --- MOBILE SECTION --- */
+
+@media only screen and (max-width: 37.5em){
+	.footer-list{
+		display:none
+	}
+}
+
+/* :::: END OF FOOTER :::: */

@@ -23,9 +23,9 @@ html{
 	background: #6b7893;
 }
 
-/* Common breakpoints set based on a 12 column grid system, where the max-width is divisible by 12 to render the html background-color and font-size */
+/* Common breakpoints set based on a 12 column-grid system, where the max-width is divisible by 12 to render the html background-color and font-size */
 
-/* max-width <= 93.75em (1500), set html background-color to white*/
+/* max-width <= 93.75em (1500px), set html background-color to white*/
 @media only screen and (max-width: 93.75em){
 	html{
 		background-color:#fff;
@@ -137,7 +137,7 @@ body{
 /* set .nav-item right margin (except the last item) */
 /* reference: https://www.geeksforgeeks.org/css-notlast-childafter-selector/ */
 .nav-item:not(:last-child){
-	margin-right: 1rem;
+	margin-right: 2rem;
 }
 
 /* set the color for .nav-link, note: pseudo class apply */

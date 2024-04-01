@@ -1,0 +1,322 @@
+@import url('href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700&family=Source+Sans+Pro:wght@300;400&display=swap"');
+
+/* Useful sites to convert units of measurements */
+/* https://nekocalc.com/px-to-rem-converter */
+/* https://codebeautify.org/em-to-px-converter */
+
+/* For context, read the following article breakpoints */
+/* https://blog.logrocket.com/css-breakpoints-responsive-design/ */
+
+/* as a good practice, add box-sizing: border-box to the universal selector (*) when starting the CSS file so its out of the way and all elements get that. The value inherit tells the element to inherit the value for the border-box property (border-box) from the parent. */
+
+/* for the first and last child if everything, reset the css style to default */
+*,*::before,*::after{
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+/* set box-sizing: border-box; where both divs are the same size now with padding and border are included in the width and height */
+html{
+	box-sizing: border-box;
+	font-size: 62.5%;
+	background: #6b7893;
+}
+
+/* Common breakpoints set based on a 12 column grid system, where the max-width is divisible by 12 to render the html background-color and font-size */
+
+/* max-width <= 93.75em (1500), set html background-color to white*/
+@media only screen and (max-width: 93.75em){
+	html{
+		background-color:#fff;
+	}
+}
+
+/* max-width <= 75em (1200px), set html font-size to 50% */
+@media only screen and (max-width: 75em){
+	html{
+		font-size:50%;
+	}
+}
+
+/* width <= 62.5em (900px), set html font-size to 62.5% */
+@media only screen and (max-width: 56.25em){
+	html{
+		font-size:62.5%;
+	}
+}
+
+/* width <= 26.25em (420px) set html font-size to 50% */
+@media only screen and (max-width: 26.25em){
+	html{
+		font-size:50%;
+	}
+}
+
+/* set the body of the page (color and font-family) */
+body{
+	color: #303646;
+	font-family: "Lato", sans-serif;
+}
+
+/* :::: START OF CONTAINER :::: */
+
+/* set the container's max width == (150rem) 1600px*/
+.container{
+	max-width: 150rem;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: [full--start] 0.6fr [center--end center--start] 0.4fr [full--end];
+	grid-template-rows: repeat(6, min-content)
+}
+
+/* when the viewport width is <1200px (75em), set the containers's max-width to 100% (100vw) */
+@media only screen and (max-width: 75em){
+	.container{
+		max-width: 100vw; 
+	}
+}
+
+/* :::: END OF CONTAINER :::: */
+
+
+/* :::: START OF NAVIGATION :::: */
+
+/* --- DESKTOP SECTION --- */
+
+/* set the .nav (navigation bar) using a grid */
+.nav{
+	grid-column: full--start / full--end;
+	padding: 1rem 1.5rem;
+	background-color: #fff;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;	
+}
+
+/* set .logo width and height */
+.logo{
+	height: 4rem;
+	width: auto;
+}
+
+/* set .logo-link */
+.logo-link{
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+}
+
+/* set logo-name */
+.logo-name{
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+/* set logo-name in bold */
+.logo-name-bold{
+	font-weight: 700;
+	color: #484848;
+}
+
+/* set logo-name (non-bold) */
+.logo-name-thin{
+	font-weight: 400;
+	color:#aaa;
+}
+
+/* set the navigation list (.nav-list) */
+/* it is common occurance to use list(s) for a navbar */
+.nav-list{
+	list-style: none;
+	font-size: 1.6rem;
+	display: flex;
+	margin-left: auto;
+}
+
+/* set .nav-item right margin (except the last item) */
+/* reference: https://www.geeksforgeeks.org/css-notlast-childafter-selector/ */
+.nav-item:not(:last-child){
+	margin-right: 1rem;
+}
+
+/* set the color for .nav-link, note: pseudo class apply */
+.nav-link:link,.nav-link:visited{
+	display: inline-block;
+	text-decoration: none;
+	color: #828282;
+}
+
+.nav-link:hover,.nav-link:active{
+	color:#b2b2b2;
+}
+
+/* --- MOBILE SECTION --- */
+
+/* change .nav's properties when max-width <= 37.5em (600px) */
+@media only screen and (max-width: 37.5em){
+	.nav{
+		padding: 0;
+		height: 6.4rem;
+	}
+}
+
+/* hide .nav-desktop when max-width < 37.5em (600px) */
+@media only screen and (max-width: 37.5em){
+	.nav-desktop{
+		display: none;
+	}
+}
+
+/* hide .nav-mobile (default) */
+.nav-mobile{
+	display: none;
+}
+
+/* display .nav-mobile when max-width < 37.5em (600px) */
+@media only screen and (max-width: 37.5em){
+	.nav-mobile{
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+}
+
+/* set the height of the mobile navigation icons */
+.nav-mobile-icon{
+	height: 4rem;
+	width:auto;
+}
+
+/* :::: END OF NAVIGATION :::: */
+
+/* :::: START OF HEADER :::: */
+
+/* --- DESKTOP SECTION --- */
+
+/* set .header_picture's background-color */
+.header-picture{
+	background-color: #c8c8c8;
+	padding: 2rem 0.75rem; /* top & bottom, left & right*/
+}
+
+/* set <img> width within .header-picture to 100% */
+.header-picture img{
+	width:100%;
+	height: auto;
+}
+
+/* set .header-content, note the padding set to the right */
+.header-content{
+	background-color: #c8c8c8;
+	padding: 0.75rem 4rem 0.75rem 0.75rem; /* top, right, bottom, left */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-start;
+}
+
+/* set <h1> tag wthin <header> */
+header h1{
+	font-size: 4.5rem;
+	line-height: 1;
+	margin-bottom: 2rem;
+}
+
+/* set <h2> tag wthin <header> */
+header h2{
+	font-size: 2rem;
+	font-weight: 300;
+	margin-bottom: 2rem;
+}
+
+/* set .btn and its pseudo classes */
+.btn,.btn:link,.btn:visited{
+	text-decoration: none;
+	display: inline-block;
+}
+
+/* set btn-call-to-action button */
+.btn-call-to-action{
+	background-color: #4a4a4a;
+	color: #fff;
+	font-weight: 300;
+	font-size: 1.8rem;
+	padding: 1.5rem 0rem; /* top & bottom, left & right*/
+	display: block;
+	align-self: stretch;
+	margin-right: 10%;
+	text-align: center;
+}
+
+/* set the mouseover effect for btn-call-to-action, note: pseudo class apply */
+.btn-call-to-action:hover{
+	transform: translateY(-3px);
+	box-shadow: 0 1rem 2rem rgba(0,0,0,0.2) /* top, right & left, bottom*/
+}
+
+/* --- MOBILE SECTION --- */
+
+/* hide .header-mobile (default) */
+.header-mobile{
+	display: none;
+}
+
+/* NOTE: Under this following approach, styles can also be combined within a single view size; in this instance, display .header_mobile and its contents when max-width < 37.5em (600px) */
+
+@media only screen and (max-width: 37.5em){
+
+	/* hide .header-picture when max-width < 37.5em (600px) */
+	.header-picture{
+		display: none;
+	}
+
+	/* hide .header-content when max-width < 37.5em (600px) */
+	.header-content{
+		display: none;
+	}
+	
+	/* display .header-mobile when max-width < 37.5em (600px) */
+	.header-mobile{
+		width: 100dvw;
+		height: auto;
+		display: block;
+		clear: both;
+		background-color: #c8c8c8;
+		padding: 0.5rem; /* top & bottom, left & right*/
+	}
+
+	/* set <img> width within .header-picture to 100% */
+	.header-mobile img{
+		width:100%;
+		height: auto;
+	}
+
+	/* set <h1> for .header-mobile */
+	header h1{
+		padding: 2rem 2rem 0rem 2rem; /* top, right, bottom, left */
+		font-size: 4rem;
+		line-height: 1;
+	}
+
+	/* set <h2> for .header-mobile */
+	header h2{
+		padding: 0rem 2rem 0rem 2rem; /* top, right, bottom, left */
+		margin-bottom: 2rem;
+	}
+
+	/* set .btn-call-to-action for .header-mobile */
+	.header-mobile .btn-call-to-action{
+		background-color: #8e8e8e;
+		color: #fff;
+		font-weight: 300;
+		font-size: 1.8rem;
+		padding: 1.5rem 0rem; /* top & bottom, left & right*/
+		display: block;
+		margin: 1.5rem 1rem 2rem 1rem; /* top, right, bottom, left */
+		align-self: stretch;
+		text-align: center;
+	}
+}
+
+/* :::: END OF HEADER :::: */

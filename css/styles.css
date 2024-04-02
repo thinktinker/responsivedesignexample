@@ -375,7 +375,6 @@ header h2{
 /* set the size of each image in class practice */
 .practice img{
 	width: 100%;
-	height: auto;
 }
 
 /* set <h3> used in .practice class */
@@ -434,7 +433,7 @@ header h2{
 
 /* set <p> used in .info-block-content class */
 .info-block-content p{
-	font-size:1.1rem;
+	font-size:1.3rem;
 	margin-bottom:1rem
 }
 
@@ -442,6 +441,16 @@ header h2{
 	background-color:#e7e7e7;
 }
 
+.btn-small:link,.btn--small:visited{
+	font-size: 1.3rem;
+	font-weight: 400;
+	color: #30A9DE;
+	border-bottom: 1px solid transparent;
+}
+
+.btn-small:hover{
+	border-bottom: 1px solid #30A9DE;
+}
 
 
 /* --- MOBILE SECTION */
@@ -450,6 +459,16 @@ header h2{
 	.practice{
 		display:none
 	}
+
+	.info-block{
+		grid-template-columns: 1fr;
+		padding: 1.6rem;
+	}
+
+	.info-block__content{
+		padding:2rem
+	}
+	
 }
 
 /* :::: END OF PRACTICE :::: */

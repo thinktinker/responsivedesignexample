@@ -452,12 +452,25 @@ header h2{
 	border-bottom: 1px solid #30A9DE;
 }
 
+.info-mobile{
+	display: none;
+}
+
 
 /* --- MOBILE SECTION */
 
 @media only screen and (max-width: 37.5em){
 	.practice{
 		display:none
+	}
+
+	.info{
+		display: none;
+	}
+
+	.info-mobile{
+		display: grid;
+		grid-column:full--start / full--end;
 	}
 
 	.info-block{
